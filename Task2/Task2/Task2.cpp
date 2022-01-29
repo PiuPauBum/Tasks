@@ -1,4 +1,4 @@
-﻿#include <fstream>
+#include <fstream>
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -9,6 +9,7 @@ int main()
     setlocale(LC_ALL, "Russian");
     int a, b, r, x, y, z;
     vector <int> res;
+    vector <int> res2;
     char buff[50];
     string file1, file2;
     cin >> file1;
@@ -16,18 +17,21 @@ int main()
     ifstream okr(file1);
     ifstream tch(file2);
 
-    okr.getline(buff, 50); 
-    a = buff[0]-48;
-    b = buff[2]-48;
-    okr.getline(buff, 50);
-    r = buff[0] - 48;
-    okr.close(); 
-    
+    while (!okr.eof())
+    {
+        okr >> buff;
+        res2.push_back(atoi(buff));
+    }
+    okr.close();
+    a = res2[0];
+    b = res2[1];
+    r = res2[2];
+
     while (!tch.eof())
     {
         tch.getline(buff, 50);
-        x = buff[0] - 48;
-        y = buff[2] - 48;
+        x = buff[0] - '0';
+        y = buff[2] - '0';
         z = pow(x - a, 2) + pow(y - b, 2);
 
         if (z == pow(r, 2))
@@ -45,3 +49,4 @@ int main()
     }
 
 }
+
