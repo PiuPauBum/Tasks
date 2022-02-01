@@ -1,0 +1,5 @@
+﻿  Task4.cpp
+C:\Users\Никита\Desktop\Task\Task4\Task4\Task4.cpp(39,16): warning C4244: return: преобразование "double" в "int", возможна потеря данных
+C:\Users\Никита\Desktop\Task\Task4\Task4\Task4.cpp(80,24): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+C:\Users\Никита\Desktop\Task\Task4\Task4\Task4.cpp(75,12): warning C4101: col: неиспользованная локальная переменная
+  Task4.vcxproj -> C:\Users\Никита\Desktop\Task\Task4\x64\Debug\Task4.exe

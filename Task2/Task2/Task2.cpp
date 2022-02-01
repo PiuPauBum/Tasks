@@ -4,40 +4,59 @@
 #include <cmath>
 using namespace std;
 
+class Krug
+{
+public: 
+    string Tochka(int a, int b, int r)
+    {
+        char buff[50];
+        int x,y,z;
+        string file;
+        cin >> file;
+        ifstream tch(file);
+        string str;
+        while (!tch.eof())
+        {
+            tch >> buff;
+            x = atoi(buff);
+            tch >> buff;
+            y = atoi(buff);           
+            z = pow(x - a, 2) + pow(y - b, 2);
+            if (z == pow(r, 2))
+                str += '0';
+            else if (z < pow(r, 2))
+                str += '1';
+            else if (z > pow(r, 2))
+                str += '2';
+        }
+        tch.close();
+        return (str);
+    }
+};
+
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    int a, b, r, x, y, z;
-    vector <int> res;
+    int a, b, r;
+    vector <int> res2;
     char buff[50];
-    string file1, file2;
+    string file1, res;
     cin >> file1;
-    cin >> file2;
     ifstream okr(file1);
-    ifstream tch(file2);
+    Krug objTochka;
 
-    okr.getline(buff, 50); 
-    a = buff[0]-48;
-    b = buff[2]-48;
-    okr.getline(buff, 50);
-    r = buff[0] - 48;
-    okr.close(); 
-    
-    while (!tch.eof())
+    while (!okr.eof())
     {
-        tch.getline(buff, 50);
-        x = buff[0] - 48;
-        y = buff[2] - 48;
-        z = pow(x - a, 2) + pow(y - b, 2);
-
-        if (z == pow(r, 2))
-            res.push_back(0);
-        else if (z < pow(r, 2))
-            res.push_back(1);
-        else if (z > pow(r, 2))
-            res.push_back(2);
+        okr >> buff;
+        res2.push_back(atoi(buff));
     }
-    tch.close();
+    okr.close();
+    a = res2[0];
+    b = res2[1];
+    r = res2[2];
+
+    res = objTochka.Tochka(a, b, r);
 
     for (int i = 0; i < res.size(); i++)
     {
